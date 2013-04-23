@@ -1,6 +1,7 @@
 
 import sys
 import os
+import string
 from twitter import *
 
 def getTwitter():
@@ -17,3 +18,8 @@ def getTwitter():
     twitter = Twitter(auth=OAuth(oauth_token, oauth_secret, CONSUMER_KEY, CONSUMER_SECRET))
 
     return twitter
+
+# idea taken from stack overflow
+# stackoverflow.com/questions/1342000/how-to-replace-non-ascii-characters-in-string
+def removeNonAscii(s):
+    return "".join(i for i in s if ord(i)<128)
