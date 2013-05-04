@@ -2,7 +2,7 @@ import urllib, cStringIO
 from PIL import Image, ImageTk
 from Tkinter import Tk, Text, Label, RIGHT, LEFT, BOTH, RAISED, TOP, BOTTOM, X, Y, W
 from ttk import Frame, Style
-import webbrowser
+import webbrowser as web
 
 class GUI(Frame):
 
@@ -22,31 +22,28 @@ class GUI(Frame):
 				 ["Reddit", "http://upload.wikimedia.org/wikipedia/en/a/af/Maine_Moose_Logo.png", "NotACat", "there's a reason it's called the best twitter bot", "https://twitter.com/Horse_ebooks", "today"], \
 				 ["Reddit", "http://upload.wikimedia.org/wikipedia/en/a/af/Maine_Moose_Logo.png", "SirWilhelm", "very helpful if you know what you are doing...", "http://www.reddit.com/r/Python/", "yesterday"]]
 		
-		for x in range(0, 3):
+		for post in posts:
 			frame = Frame(self)
 			frame.pack(side=TOP, fill=X)
 			
-			file = cStringIO.StringIO(urllib.urlopen(posts[x][1]).read())
+			file = cStringIO.StringIO(urllib.urlopen(post[1]).read())
 			raw = Image.open(file).resize((40,40), Image.ANTIALIAS)
 			img = ImageTk.PhotoImage(raw)
 			thumb = Label(frame, image=img)
 			thumb.image = img
-			thumb.bind("<1>", lambda event, index=x: self.click_link(event, index))
+			thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
 			thumb.pack(side=LEFT)
 			
 			body = Frame(frame)
 			body.pack(fill=BOTH)
 			
-			title = Label(body, text=posts[x][3], foreground="#0000dd")
-			title.bind("<1>", lambda event, index=x: webbrowser.open_new(posts[index][4]))
+			title = Label(body, text=post[3], foreground="#0000dd")
+			title.bind("<1>", lambda event, url=post[4]: web.open_new(url))
 			title.pack(anchor=W)
 			
-			details = Label(body, text=posts[x][5]+" by "+posts[x][2])
+			details = Label(body, text=post[5]+" by "+post[2])
 			details.pack(anchor=W)
 
-
-	def click_link(self, event, index):
-		print "you clicked %i" % index
 
 def main():
 	
