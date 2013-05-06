@@ -20,7 +20,7 @@ class GUI(Frame):
 		
 		posts = [["Reddit", "http://upload.wikimedia.org/wikipedia/en/a/af/Maine_Moose_Logo.png", "DrPresley", "Way funnier than the movie!", "http://www.youtube.com/watch?v=LJQ-LZYAMBQ", "today"], \
 				 ["Reddit", "http://upload.wikimedia.org/wikipedia/en/a/af/Maine_Moose_Logo.png", "NotACat", "there's a reason it's called the best twitter bot", "https://twitter.com/Horse_ebooks", "today"], \
-				 ["Reddit", "http://i.imgur.com/Cy2Yt4r.jpg", "SirWilhelm", "very helpful if you know what you are doing...", "http://www.reddit.com/r/Python/", "yesterday"]]
+				 ["Reddit", "http://upload.wikimedia.org/wikipedia/en/a/af/Maine_Moose_Logo.png", "very helpful if you know what you are doing...", "http://www.reddit.com/r/Python/", "yesterday"]]
 		
 		for post in posts:
 			frame = Frame(self)
