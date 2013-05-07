@@ -1,0 +1,25 @@
+Matthew Dillard, Jacob Pokora
+Team 13 Final Report
+	Our project goal was to create a unified interface for Reddit and Twitter. Using logins for both of their APIs, our application was going to display most recent tweets and posts in addition to having a search feature to narrow down the displayed results. Our project was completed with varying degrees of success due to uncontrollable circumstances.
+	Travis Lamb was the member of our group who took the responsibility of interfacing with both Reddit and Twitter APIs. Before his passing, he was able to authenticate accounts on both web services and retrieve live post information. However, a lot of information was left out in the end due to only completing a proof of concept. 
+
+Things left incomplete/not implemented
+• reddit upvote/downvote feature
+• reddit links
+• reddit date
+• twitter retweets
+• dynamic login for both twitter and reddit
+• search to narrow down results
+• display of reddit preview thumbnail
+• display of twitter author avatar
+• scrolling
+
+Things fully implemented
+• grabbing posts from twitter
+• grabbing posts from reddit
+• user authentication for twitter
+• user authentication for reddit
+• use of XML to store tweet and post data
+• display of posts in redditish format
+
+	We weren't too successful in picking up where Travis left off. The majority of our incomplete features were due to a lack of underutilization of our twitter and reddit APIs.
