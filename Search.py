@@ -100,5 +100,8 @@ def FrontPage():
 
     for post in PostList2:
         PostList.append(post)
+    
+    random.shuffle(PostList)
+    return PostList
 
-    return random.shuffle(PostList)
+
