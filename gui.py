@@ -1,6 +1,6 @@
 import urllib, cStringIO
 from PIL import Image, ImageTk
-from Tkinter import Tk, Text, Label, Entry, Button, RIGHT, LEFT, BOTH, RAISED, TOP, BOTTOM, X, Y, W
+from Tkinter import Tk, Text, Label, Message, Entry, Button, RIGHT, LEFT, BOTH, RAISED, TOP, BOTTOM, X, Y, W
 from ttk import Frame, Style
 import webbrowser as web
 import Search
@@ -38,6 +38,7 @@ class GUI(Frame):
 			frame.pack(side=TOP, fill=X)
 			
 			#file = cStringIO.StringIO(urllib.urlopen("location").read())
+			
 			if post.type == "RedditPost":
 				raw = Image.open("reddit.png").resize((40,40), Image.ANTIALIAS)
 				img = ImageTk.PhotoImage(raw)
@@ -52,12 +53,11 @@ class GUI(Frame):
 				thumb.image = img
 				#thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
 				thumb.pack(side=LEFT)
-			print post.type
 			
 			body = Frame(frame)
 			body.pack(fill=BOTH)
 			
-			title = Label(body, text=post.title, foreground="#0000dd")
+			title = Message(body, text=post.title, foreground="#0000dd", justify=LEFT, width=550)
 			#title.bind("<1>", lambda event, url=post[4]: web.open_new(url))
 			title.pack(anchor=W)
 			
