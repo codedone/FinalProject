@@ -26,15 +26,15 @@ class GUI(Frame):
 			frame.pack(side=TOP, fill=X)
 			
 			#file = cStringIO.StringIO(urllib.urlopen("location").read())
-			if (post._class_._name_ == "RedditPost")
+			if post._class_._name_ == "RedditPost":
 				raw = Image.open("reddit.png").resize((40,40), Image.ANTIALIAS)
-			else
+			else:
 				raw = Image.open("twitter.png").resize((40,40), Image.ANTIALIAS)
-			#img = ImageTk.PhotoImage(raw)
-			#thumb = Label(frame, image=img)
-			#thumb.image = img
+			img = ImageTk.PhotoImage(raw)
+			thumb = Label(frame, image=img)
+			thumb.image = img
 			#thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
-			#thumb.pack(side=LEFT)
+			thumb.pack(side=LEFT)
 			
 			body = Frame(frame)
 			body.pack(fill=BOTH)
