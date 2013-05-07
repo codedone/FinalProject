@@ -1,11 +1,13 @@
 import urllib, cStringIO
 from PIL import Image, ImageTk
-from Tkinter import Tk, Text, Label, RIGHT, LEFT, BOTH, RAISED, TOP, BOTTOM, X, Y, W
+from Tkinter import Tk, Text, Label, Entry, Button, RIGHT, LEFT, BOTH, RAISED, TOP, BOTTOM, X, Y, W
 from ttk import Frame, Style
 import webbrowser as web
 import Search
 
 class GUI(Frame):
+	
+	search = Entry()
 
 	def __init__(self, parent):
 		Frame.__init__(self, parent)
@@ -19,6 +21,15 @@ class GUI(Frame):
 		
 		self.pack(fill=BOTH, expand=1)
 		
+		search = Entry(self)
+		
+		def callback():
+			print search.get()
+
+		b = Button(self, text="Search", width=5, command=callback)
+		b.pack(anchor=W)
+		search.pack(anchor=W)
+		
 		posts = Search.FrontPage()
 		
 		for post in posts:
@@ -26,7 +37,7 @@ class GUI(Frame):
 			frame.pack(side=TOP, fill=X)
 			
 			#file = cStringIO.StringIO(urllib.urlopen("location").read())
-			if post._class_._name_ == "RedditPost":
+			if post.type == "RedditPost":
 				raw = Image.open("reddit.png").resize((40,40), Image.ANTIALIAS)
 			else:
 				raw = Image.open("twitter.png").resize((40,40), Image.ANTIALIAS)
