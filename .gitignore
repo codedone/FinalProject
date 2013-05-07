@@ -4,3 +4,5 @@
 __pycache__/Post.cpython-33.pyc
 
 __pycache__/Search.cpython-33.pyc
+
+*.pyc
