@@ -14,7 +14,7 @@ def InitializeRedditFromXML():
     f = open('RedditAPI/unsorted_posts.xml')
 
     for line in f:
-        line = ''.join(line.split())
+        line = ' '.join(line.split())
         if line == '<post>':
             continue
         if '<author>' in line:
@@ -22,7 +22,7 @@ def InitializeRedditFromXML():
             user = user.replace('<author>','').replace('</author>','')
         if '<title>' in line:
             post = line
-            user = user.replace('<title>','').replace('</title>','')
+            post = post.replace('<title>','').replace('</title>','')
         if '<url>' in line:
             URL = line
             URL = URL.replace('<url>','').replace('</url>','')
@@ -44,7 +44,7 @@ def InitializeTwitterFromXML():
     f = open('unsorted_tweets.xml')
 
     for line in f:
-        line = ''.join(line.split())
+        line = ' '.join(line.split())
         if line == '<tweet>':
             continue
         if "<post>" in line:
