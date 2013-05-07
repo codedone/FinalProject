@@ -2,10 +2,12 @@ class Post(object):
     title = ""
     user = ""
     date = ""
-    def __init__(self, _title, _user, _date):
+    type = ""
+    def __init__(self, _title, _user, _date, _type):
         self.title = _title
         self.date = _date
         self.user = _user
+        self.type = _type
     def getTitle():
         return title
     def getUser():
@@ -16,7 +18,7 @@ class Post(object):
 class TwitterPost(Post):
     retweets = 0
     def __init__(self, _title, _user, _date):
-        super(TwitterPost, self).__init__(_title, _user, _date)
+        super(TwitterPost, self).__init__(_title, _user, _date, "TwitterPost")
 
 class RedditPost(Post):
     upvotes = 0
@@ -26,4 +28,4 @@ class RedditPost(Post):
         self.upvotes = _upvotes
         self.downvotes = _downvotes
         self.imgURL = _URL
-        super(RedditPost, self).__init__(_title, _user, _date)
+        super(RedditPost, self).__init__(_title, _user, _date, "RedditPost")
