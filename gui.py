@@ -7,8 +7,6 @@ import Search
 
 class GUI(Frame):
 	
-	search = Entry()
-
 	def __init__(self, parent):
 		Frame.__init__(self, parent)
 		
@@ -21,14 +19,17 @@ class GUI(Frame):
 		
 		self.pack(fill=BOTH, expand=1)
 		
-		search = Entry(self)
+		frame = Frame(self)
+		frame.pack(fill=X)
+		
+		search = Entry(frame)
 		
 		def callback():
 			print search.get()
 
-		b = Button(self, text="Search", width=5, command=callback)
-		b.pack(anchor=W)
-		search.pack(anchor=W)
+		b = Button(frame, text="Search", width=5, command=callback)
+		b.pack(side=RIGHT)
+		search.pack(side=RIGHT)
 		
 		posts = Search.FrontPage()
 		
@@ -39,13 +40,19 @@ class GUI(Frame):
 			#file = cStringIO.StringIO(urllib.urlopen("location").read())
 			if post.type == "RedditPost":
 				raw = Image.open("reddit.png").resize((40,40), Image.ANTIALIAS)
+				img = ImageTk.PhotoImage(raw)
+				thumb = Label(frame, image=img)
+				thumb.image = img
+				#thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
+				thumb.pack(side=LEFT)
 			else:
 				raw = Image.open("twitter.png").resize((40,40), Image.ANTIALIAS)
-			img = ImageTk.PhotoImage(raw)
-			thumb = Label(frame, image=img)
-			thumb.image = img
-			#thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
-			thumb.pack(side=LEFT)
+				img = ImageTk.PhotoImage(raw)
+				thumb = Label(frame, image=img)
+				thumb.image = img
+				#thumb.bind("<1>", lambda event, url=post[1]: web.open_new(url))
+				thumb.pack(side=LEFT)
+			print post.type
 			
 			body = Frame(frame)
 			body.pack(fill=BOTH)
